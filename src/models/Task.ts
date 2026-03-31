@@ -6,7 +6,9 @@ export interface ITask extends Document {
     title: string,
     description?: string,
     completed: boolean,
-    duedate?: Date
+    createdAt?: Date,
+    duedate?: Date,
+    tags?:string[]
 }
 
 const TaskSchema = new Schema<ITask>({
@@ -25,9 +27,16 @@ const TaskSchema = new Schema<ITask>({
         type: Boolean,
         default: false
     },
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    },
     duedate: {
         type: Date,
         default: Date.now()
+    },
+    tags:{
+        type:[{type:String}]
     }
 })
 
